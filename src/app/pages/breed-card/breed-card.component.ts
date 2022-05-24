@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Breed } from '../../modules/interface';
 import { BreedsService } from '../../services/breeds.service';
 
@@ -10,6 +10,8 @@ import { BreedsService } from '../../services/breeds.service';
 export class BreedCardComponent implements OnInit {
   title = 'dog-app';
   breedList: Breed[] = [];
+  @Input() searchText: string = '';
+
 
   constructor( private breedsService:  BreedsService){}
 

@@ -1,12 +1,12 @@
-<mat-grid-list cols="8" rowHeight="22rem" gutterSize="1rem`">
-  <mat-grid-tile *ngFor="let item of breedList">
+<mat-grid-list cols="5" rowHeight="22vw" gutterSize="1vw">
+  <mat-grid-tile *ngFor="let item of breedList | appFilter: searchText">
     <mat-card class="card">
-      <mat-card-header>
+      <mat-card-header class="card-header">
         <mat-card-title>{{item.name}}</mat-card-title>
         <mat-card-subtitle>{{item.breed_group}}</mat-card-subtitle>
       </mat-card-header>
       <img mat-card-image src="{{item.image.url}}" alt="Photo of a{{item.name}}" class="card-image">
-      <mat-card-content>
+      <mat-card-content class="card-content">
         <p>{{item.bred_for}}</p>
       </mat-card-content>
       <mat-card-actions>

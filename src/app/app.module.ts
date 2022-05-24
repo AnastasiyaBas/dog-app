@@ -8,11 +8,16 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { BreedCardComponent } from './pages/breed-card/breed-card.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    BreedCardComponent
+    BreedCardComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -21,7 +26,10 @@ import { BreedCardComponent } from './pages/breed-card/breed-card.component';
     HttpClientModule,
     MatGridListModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
