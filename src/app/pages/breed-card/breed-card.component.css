@@ -1,8 +1,15 @@
 .card-image {
-  max-height: 140px;
+  max-height: 10rem;
   object-fit: cover;
 }
-mat-card {
-  width: 200px;
-  height: 300px;
+.card {
+  height: 18vw;
+  width: 15vw;
+  background-color: #7c747e;
+}
+.card-header {
+  min-height: 4vw;
+}
+.card-content {
+  min-height: 2vw;
 }

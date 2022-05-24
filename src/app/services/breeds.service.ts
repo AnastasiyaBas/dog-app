@@ -18,7 +18,7 @@ export class BreedsService {
     headers.append('x-api-key', '45fd61d6-d878-4f93-a3e5-a3fd62b99955');
     this.http.get<Breed[]>(`https://api.thedogapi.com/v1/breeds`, {
       headers,
-    params: new HttpParams().set('limit', '5')
+    params: new HttpParams().set('limit', '')
     })
     .subscribe(resolve => {
       this.dogList.next(resolve)
