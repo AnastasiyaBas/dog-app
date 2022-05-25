@@ -1,0 +1,12 @@
+.flex-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.dialog-image {
+  max-width: 20vw;
+}
+.dialog-desc {
+  padding: 2vw;
+  min-width: 32vw;
+  margin: auto;
+}

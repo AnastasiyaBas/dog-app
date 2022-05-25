@@ -10,14 +10,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { BreedCardComponent } from './pages/breed-card/breed-card.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogCardComponent } from './pages/dialog-card/dialog-card.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     BreedCardComponent,
-    FilterPipe
+    FilterPipe,
+    DialogCardComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,8 @@ import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

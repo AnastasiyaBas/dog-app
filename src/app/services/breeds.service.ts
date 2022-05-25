@@ -25,4 +25,7 @@ export class BreedsService {
     console.log(resolve)});
   }
   
+  getElemetById(id: number): Breed | undefined {
+    return this.dogList.getValue().find(item => {item.id === id});
+  }
 }

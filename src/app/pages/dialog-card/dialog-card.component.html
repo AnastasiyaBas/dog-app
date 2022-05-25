@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>{{data.name}}</h1>
+<div mat-dialog-content class="flex-wrapper">
+  <img src="{{data.image.url}}" alt="Photo of a{{data.name}}" class="dialog-image">
+  <div class="flex-wrapper dialog-desc">
+    <div>
+      <p>Dog Breed Group:</p>
+      <p>Life Span:</p>
+      <p>Origin:</p>
+      <p>Temperament:</p>
+      <p>About breed:</p>
+      <p>Height:</p>
+      <p>Weight:</p>
+    </div>
+    <div>
+      <p>{{data.breed_group}}</p>
+      <p>{{data.life_span}}</p>
+      <p>{{data.origin}}</p>
+      <p>{{data.temperament}}</p>
+      <p>{{data.bred_for}}</p>
+      <p>{{data.height.metric}}</p>
+      <p>{{data.weight.metric}}</p>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>
