@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
-import { Breed } from '../modules/interface';
+import { Breed } from '../modules/breed';
 
 @Injectable({
   providedIn: 'root'
@@ -22,10 +22,6 @@ export class BreedsService {
     })
     .subscribe(resolve => {
       this.dogList.next(resolve)
-    console.log(resolve)});
-  }
-  
-  getElemetById(id: number): Breed | undefined {
-    return this.dogList.getValue().find(item => {item.id === id});
+    });
   }
 }

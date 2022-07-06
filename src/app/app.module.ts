@@ -7,20 +7,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { BreedCardComponent } from './pages/breed-card/breed-card.component';
+import { BreedListComponent } from './pages/breed-page/breed-list/breed-list.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
-import { DialogCardComponent } from './pages/dialog-card/dialog-card.component';
-
+import { BreedCardComponent } from './pages/breed-page/breed-list/breed-card/breed-card.component';
+import { BreedPageComponent } from './pages/breed-page/breed-page.component';
+import { BreedSearchComponent } from './pages/breed-page/breed-search/breed-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BreedCardComponent,
+    BreedListComponent,
     FilterPipe,
-    DialogCardComponent
+    BreedCardComponent,
+    BreedPageComponent,
+    BreedSearchComponent,
   ],
   imports: [
     BrowserModule,
