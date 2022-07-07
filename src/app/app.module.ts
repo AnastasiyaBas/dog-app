@@ -15,6 +15,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { BreedCardComponent } from './pages/breed-page/breed-list/breed-card/breed-card.component';
 import { BreedPageComponent } from './pages/breed-page/breed-page.component';
 import { BreedSearchComponent } from './pages/breed-page/breed-search/breed-search.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import {BreedsEffects} from "./store/breed.effects";
+import {BREED_FEATURE_KEY} from "./store/breed.state";
+import {reducer} from "./store/breed.reducer";
+import {BreedStateFacade} from "./facade/breed-state-facade";
 
 @NgModule({
   declarations: [
@@ -37,8 +45,12 @@ import { BreedSearchComponent } from './pages/breed-page/breed-search/breed-sear
     ReactiveFormsModule,
     MatInputModule,
     MatDialogModule,
+    StoreModule.forRoot({}, {}),
+    StoreModule.forFeature(BREED_FEATURE_KEY, reducer),
+    EffectsModule.forRoot([BreedsEffects]),
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
-  providers: [],
+  providers: [BreedStateFacade],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

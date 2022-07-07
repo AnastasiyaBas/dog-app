@@ -1,0 +1,8 @@
+<mat-form-field class="form" appearance="fill">
+    <mat-label>Search breed</mat-label>
+    <input matInput
+           autocomplete="off"
+           placeholder="Ex. Akbash"
+           [ngModel]="searchText"
+           (ngModelChange)="addNewItem($event)">
+</mat-form-field>
