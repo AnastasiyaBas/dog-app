@@ -1,22 +1,24 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { Breed } from '../../../modules/breed';
-import { BreedCardComponent } from './breed-card/breed-card.component';
+import {Component, Input} from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import {Breed} from '../../../modules/breed';
+import {BreedCardComponent} from './breed-card/breed-card.component';
 
 @Component({
-  selector: 'app-breed-list',
-  templateUrl: './breed-list.component.html',
-  styleUrls: ['./breed-list.component.css']
+    selector: 'app-breed-list',
+    templateUrl: './breed-list.component.html',
+    styleUrls: ['./breed-list.component.css']
 })
-export class BreedListComponent implements OnInit {
-  @Input() breedList: Breed[] = [];
-  @Input() searchText: string = '';
+export class BreedListComponent {
+    myBreedList: Breed[] = [];
 
-  constructor( public dialog: MatDialog ) {}
+    @Input() set breedList(value: Breed[] | null) {
+        this.myBreedList = value ? value : [];
+    }
+    
+    constructor(public dialog: MatDialog) {
+    }
 
-  ngOnInit(): void {}
-
-  openDialog(item: Breed) {
-    this.dialog.open(BreedCardComponent, {data: item});
-  }
+    openDialog(item: Breed) {
+        this.dialog.open(BreedCardComponent, {data: item});
+    }
 }

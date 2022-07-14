@@ -5,8 +5,7 @@
                 (valueEmitter)="addSearchText($event)">
         </app-breed-search>
         <app-breed-list
-                [breedList] = "breedList"
-                [searchText]="searchInput">
+                [breedList]="breedList$ | async">
         </app-breed-list>
     </div>
 </div>

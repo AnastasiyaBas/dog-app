@@ -1,31 +1,24 @@
 import {Component, OnInit} from '@angular/core';
-import {Breed} from "../../modules/breed";
+import {Observable} from "rxjs";
 import {BreedStateFacade} from "../../facade/breed-state-facade";
-import {filter, switchMap} from "rxjs";
+import {Breed} from "../../modules/breed";
 
 @Component({
-  selector: 'app-breed-page',
-  templateUrl: './breed-page.component.html',
-  styleUrls: ['./breed-page.component.css']
+    selector: 'app-breed-page',
+    templateUrl: './breed-page.component.html',
+    styleUrls: ['./breed-page.component.css']
 })
 export class BreedPageComponent implements OnInit {
-  searchInput: string = '';
-  breedList: Breed[] = [];
-  constructor( private readonly breedFacade: BreedStateFacade) { }
+    breedList$: Observable<Breed[]> = this.breedFacade.BreedList();
 
-  ngOnInit(): void {
-    this.breedFacade.loadBreeds();
-    this.breedFacade.loaded$
-        .pipe(
-            filter((isLoaded: boolean) => isLoaded),
-            switchMap(() => this.breedFacade.allBreeds$)
-        )
-        .subscribe((breeds: Breed[]) => {
-          this.breedList = breeds;
-        });
-  }
+    constructor(private readonly breedFacade: BreedStateFacade) {
+    }
 
-  addSearchText(value: string) {
-    this.searchInput = value;
-  }
+    ngOnInit(): void {
+        this.breedFacade.loadBreeds();
+    }
+
+    addSearchText(value: string) {
+        this.breedFacade.addSearchValue(value)
+    }
 }

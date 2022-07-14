@@ -6,6 +6,7 @@ export enum BreedActionsNames {
     LoadBreeds = '[Breed] Load Breeds',
     LoadBreedsSuccess = '[Breed] Load Breeds Success',
     LoadBreedsFailure = '[Breed] Load Breeds Failure',
+    AddSearchValue = '[string] Add Search Value',
 }
 
 export const Init = createAction(BreedActionsNames.Init);
@@ -20,4 +21,9 @@ export const LoadBreedsSuccess = createAction(
 export const LoadBreedsFailure = createAction(
     BreedActionsNames.LoadBreedsFailure,
     props<{ error: string | null }>()
+);
+
+export const AddSearchValue = createAction(
+    BreedActionsNames.AddSearchValue,
+    props<{ search: string | '' }>()
 );
