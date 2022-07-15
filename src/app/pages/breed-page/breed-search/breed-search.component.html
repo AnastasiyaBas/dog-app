@@ -3,6 +3,5 @@
     <input matInput
            autocomplete="off"
            placeholder="Ex. Akbash"
-           [ngModel]="searchText"
-           (ngModelChange)="addNewItem($event)">
+           [formControl]="formControl">
 </mat-form-field>

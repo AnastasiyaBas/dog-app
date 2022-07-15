@@ -2,10 +2,11 @@
     <h1 class="header">Dog breeds</h1>
     <div class="content">
         <app-breed-search
-                (valueEmitter)="addSearchText($event)">
+                [initialValue]="breedFacade.searchValue$ | async"
+                (valueEmitter)="searchText($event)">
         </app-breed-search>
         <app-breed-list
-                [breedList]="breedList$ | async">
+                [breedList]="breedFacade.breedList$ | async">
         </app-breed-list>
     </div>
 </div>
