@@ -10,6 +10,7 @@ import {BreedStateFacade} from "../../facade/breed-state-facade";
 })
 export class BreedPageComponent implements OnInit, OnDestroy {
     searchKey = 'search';
+    categoryKey = 'category';
     private destroyed$: Subject<boolean> = new Subject<boolean>();
 
     constructor(
@@ -21,25 +22,23 @@ export class BreedPageComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.breedFacade.loadBreeds();
+        this.breedFacade.categoryList$.subscribe((categories: string[]) => {
+            this.breedFacade.addCategoryOptions(categories);
+        });
+
         this.route.queryParams.pipe(
             map((p: Params) => p[this.searchKey]),
             takeUntil(this.destroyed$)
         ).subscribe((search: string) => {
-            this.breedFacade.addSearchValue(search);
+            search ? this.breedFacade.addSearchValue(search) : null;
         });
 
-    }
-
-    unique(arr: string[]) {
-        let result: any[] = [];
-
-        for (let str of arr) {
-            if (!result.includes(str)) {
-                result.push(str);
-            }
-        }
-
-        return result;
+        this.route.queryParams.pipe(
+            map((p: Params) => p[this.categoryKey]),
+            takeUntil(this.destroyed$)
+        ).subscribe(category => {
+            category ? this.breedFacade.AddSelectedOption(JSON.parse(category)) : null;
+        });
     }
 
     searchText(value: string) {
@@ -47,7 +46,19 @@ export class BreedPageComponent implements OnInit, OnDestroy {
             relativeTo: this.route,
             queryParams: {
                 [this.searchKey]: value
-            }
+            },
+            queryParamsHandling: 'merge'
+        });
+    }
+
+    selectedCategory(value: string[]) {
+        const newArr = JSON.stringify(value);
+        this.router.navigate([''], {
+            relativeTo: this.route,
+            queryParams: {
+                [this.categoryKey]: newArr,
+            },
+            queryParamsHandling: 'merge'
         });
     }
 

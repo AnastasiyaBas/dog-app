@@ -1,0 +1,26 @@
+<mat-form-field class="w-100" appearance="fill">
+    <mat-label>Select breed group</mat-label>
+    <input aria-label="Filter..."
+           matInput
+           [formControl]="formControl"
+           [matAutocomplete]="categoryAuto">
+    <mat-icon class="white-icon" matSuffix>search</mat-icon>
+    <mat-autocomplete #categoryAuto="matAutocomplete"
+                      (optionSelected)="selectOption(formControl.value)">
+        <mat-option *ngFor="let category of categories" [value]="category">
+            {{category}}
+        </mat-option>
+    </mat-autocomplete>
+</mat-form-field>
+
+<mat-chip-list>
+    <mat-chip *ngFor="let category of selectedCategoryOptions"
+              class="app-custom-chip overline"
+              color="primary"
+              selected>
+        {{category}}
+        <div matChipRemove (click)="removeSelectedOption(category)">
+            <mat-icon>cancel</mat-icon>
+        </div>
+    </mat-chip>
+</mat-chip-list>

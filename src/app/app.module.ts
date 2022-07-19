@@ -1,10 +1,13 @@
 import {HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import {MatChipsModule} from "@angular/material/chips";
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from '@angular/material/input';
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {BrowserModule} from '@angular/platform-browser';
@@ -23,6 +26,10 @@ import {BreedSearchComponent} from './pages/breed-page/breed-search/breed-search
 import {BreedsEffects} from "./store/breed.effects";
 import {reducer} from "./store/breed.reducer";
 import {BREED_FEATURE_KEY} from "./store/breed.state";
+import {BreedFiltersComponent} from './pages/breed-page/breed-filters/breed-filters.component';
+import {
+    BreedCategoryFilterComponent
+} from './pages/breed-page/breed-filters/breed-category-filter/breed-category-filter.component';
 
 @NgModule({
     declarations: [
@@ -31,6 +38,8 @@ import {BREED_FEATURE_KEY} from "./store/breed.state";
         BreedCardComponent,
         BreedPageComponent,
         BreedSearchComponent,
+        BreedFiltersComponent,
+        BreedCategoryFilterComponent,
     ],
     imports: [
         BrowserModule,
@@ -48,7 +57,11 @@ import {BREED_FEATURE_KEY} from "./store/breed.state";
         StoreModule.forFeature(BREED_FEATURE_KEY, reducer),
         EffectsModule.forRoot([BreedsEffects]),
         !environment.production ? StoreDevtoolsModule.instrument() : [],
-        MatPaginatorModule
+        MatPaginatorModule,
+        MatAutocompleteModule,
+        MatIconModule,
+        MatChipsModule
+
     ],
     providers: [BreedStateFacade],
     bootstrap: [AppComponent]

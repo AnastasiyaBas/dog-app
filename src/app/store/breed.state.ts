@@ -7,6 +7,8 @@ export interface BreedState {
     loaded: boolean;
     error: string | null;
     search: string | '';
+    categories: string[];
+    selectedCategories: string[];
 }
 
 export const initialBreedState: BreedState = {
@@ -14,4 +16,6 @@ export const initialBreedState: BreedState = {
     loaded: false,
     error: null,
     search: '',
+    categories: [],
+    selectedCategories: []
 };
