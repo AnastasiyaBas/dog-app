@@ -1,0 +1,21 @@
+<div class="wrapper">
+    <h1 class="header">Dog breeds</h1>
+    <div class="content">
+        <div>
+            <app-breed-search
+                    [initialValue]="breedFacade.searchValue$ | async"
+                    (valueEmitter)="searchText($event)">
+            </app-breed-search>
+            <app-breed-list
+                    [breedList]="breedFacade.breedList$ | async">
+            </app-breed-list>
+        </div>
+        <div>
+            <app-breed-filters
+                    [categoryOptions]="breedFacade.filteredCategories$ | async"
+                    (valueEmitter)="selectedCategory($event)"
+                    [selectedOptions]="breedFacade.selectedOptions$ | async">
+            </app-breed-filters>
+        </div>
+    </div>
+</div>
